@@ -1,5 +1,5 @@
 # caps
-# LAB - Class 16
+# LAB - Class 17
 
 ## Project: CAPS
 
@@ -7,7 +7,7 @@
 
 ### Links and Resources
 
-- [submission PR](https://github.com/batool-alali-401-advanced-javascript/caps/pull/1)
+- [submission PR](https://github.com/batool-alali-401-advanced-javascript/caps/pull/4)
 - [Live URL]()
 - [JsDoc]()
 - [ci/cd](https://github.com/batool-alali-401-advanced-javascript/caps/runs/770257173)
@@ -18,10 +18,13 @@
     - STORE_NAME
 
 #### How to initialize/run your application 
-- `$node index.js`
+- `$node caps.js`
+- `$node driver.js`
+- `$node vendor.js`
+
 
 #### Libraries:
-- 'events'
+- 'faker.js'
 
 
 
@@ -31,4 +34,4 @@
 
 
 #### UML
-![UML Diagram](UML1.jpg)
+![UML Diagram](UML2.jpg)

@@ -1,5 +1,5 @@
 'use strict';
-const handler = require('../lib/caps.js');
+const handler = require('../lib/caps/caps.js');
 
 let consoleSpy = jest.spyOn(console, 'log');
 
