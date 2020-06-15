@@ -3,98 +3,89 @@ const handler = require('../lib/caps/caps.js');
 
 let consoleSpy = jest.spyOn(console, 'log');
 
-describe('Handler', () => {
+describe('logger', () => {
   it('can log pickup ', () => {
 
-    let payload = {
-      time: '14 June',
-      store:'bato',
-      orderId: 12345,
-      customer: 'batool',
-      address: 'Amman',
+    let obj = {
+      event:'pickup',
+      customerOrder:{
+        time: '14 June',
+        store:'bato',
+        orderId: 12345,
+        customer: 'batool',
+        address: 'Amman',
+      },
     };
-
-    handler.driverPickup(payload);
-    expect(consoleSpy).toHaveBeenCalledWith(`Driver is picking up order ${payload.orderId}`);
+    let event = JSON.stringify(obj);
+    handler(event);
+    expect(consoleSpy).toBeCalledTimes(2);
   });
 
   it('can log in-transit', () => {
   
-    let payload = {
-      time: '14 June',
-      store:'bato',
-      orderId: 12345,
-      customer: 'batool',
-      address: 'Amman',
+    let obj = {
+      event:'in-transit',
+      customerOrder:{
+        time: '14 June',
+        store:'bato',
+        orderId: 12345,
+        customer: 'batool',
+        address: 'Amman',
+      },
     };
-  
-    handler.driverDelivered(payload);
-    setTimeout(() => {
-      expect(consoleSpy).toHaveBeenCalledWith(`Delivered order ${payload.orderId}`);
-    }, 3000);
+    let event = JSON.stringify(obj);
+    handler(event);
+    expect(consoleSpy).toHaveBeenCalledWith('in-transit order', obj.customerOrder.orderId  );
   });
 
-  it('can log vendor ', () => {
-    let payload = {
-      time: '14 June',
-      store:'bato',
-      orderId: 12345,
-      customer: 'batool',
-      address: 'Amman',
+  it('can log delivered', () => {
+  
+    let obj = {
+      event:'delivered',
+      customerOrder:{
+        time: '14 June',
+        store:'bato',
+        orderId: 12345,
+        customer: 'batool',
+        address: 'Amman',
+      },
     };
-  
-    handler.vendorDelivered(payload);
-    setTimeout(() => {
-      expect(consoleSpy).toHaveBeenCalledWith(`Vendor: thank you for delivering order ${payload.orderId}`);
-    }, 5000);
+    let event = JSON.stringify(obj);
+    handler(event);
+    expect(consoleSpy).toHaveBeenCalledWith('delivered order', obj.customerOrder.orderId);
   });
-
-  it('can log in transit order ', () => {
-    let payload = {
-      time: '14 June',
-      store:'bato',
-      orderId: 12345,
-      customer: 'batool',
-      address: 'Amman',
-    };
-  
-  
-    handler.inTransitOrder(payload);
-    expect(consoleSpy).toHaveBeenCalledWith(`EVENT in-transit ${payload.orderId}`);
-  });
-
-  it('can log in delivered order ', () => {
-    let payload = {
-      time: '14 June',
-      store:'bato',
-      orderId: 12345,
-      customer: 'batool',
-      address: 'Amman',
-    };
+  // it('can log in delivered order ', () => {
+  //   let payload = {
+  //     time: '14 June',
+  //     store:'bato',
+  //     orderId: 12345,
+  //     customer: 'batool',
+  //     address: 'Amman',
+  //   };
   
 
-    handler.deliveredOrder(payload);
-    expect(consoleSpy).toHaveBeenCalledWith(`Delivered order ${payload.orderId}`);
-  });
+  //   handler.deliveredOrder(payload);
+  //   expect(consoleSpy).toHaveBeenCalledWith(`Delivered order ${payload.orderId}`);
+  // });
 
-  it('can log pickup order ', () => {
-    let payload = {
-      time: '14 June',
-      store:'bato',
-      orderId: 12345,
-      customer: 'batool',
-      address: 'Amman',
-    };
+  // it('can log pickup order ', () => {
+  //   let payload = {
+  //     time: '14 June',
+  //     store:'bato',
+  //     orderId: 12345,
+  //     customer: 'batool',
+  //     address: 'Amman',
+  //   };
   
 
-    handler.pickupOrder(payload);
-    expect(consoleSpy).toHaveBeenCalledWith('EVENT pickup');
-    expect(consoleSpy).toHaveBeenCalledWith('Time:', payload.time);
-    expect(consoleSpy).toHaveBeenCalledWith('Store:', payload.store);
-    expect(consoleSpy).toHaveBeenCalledWith('OrderID:', payload.orderId);
-    expect(consoleSpy).toHaveBeenCalledWith('Customer:', payload.customer);
-    expect(consoleSpy).toHaveBeenCalledWith('Address:', payload.address);
+  //   handler.pickupOrder(payload);
+  //   expect(consoleSpy).toHaveBeenCalledWith('EVENT pickup');
+  //   expect(consoleSpy).toHaveBeenCalledWith('Time:', payload.time);
+  //   expect(consoleSpy).toHaveBeenCalledWith('Store:', payload.store);
+  //   expect(consoleSpy).toHaveBeenCalledWith('OrderID:', payload.orderId);
+  //   expect(consoleSpy).toHaveBeenCalledWith('Customer:', payload.customer);
+  //   expect(consoleSpy).toHaveBeenCalledWith('Address:', payload.address);
 
-  });
+  // });
 
 });
