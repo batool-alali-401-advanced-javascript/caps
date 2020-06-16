@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose",
+    "test": "jest --coverage --verbose --forceExit --maxWorkers=10",
     "lint": "eslint '**/*.js'",
     "start": "node index.js",
     "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
