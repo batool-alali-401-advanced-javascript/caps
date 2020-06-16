@@ -7,10 +7,10 @@
 
 ### Links and Resources
 
-- [submission PR](https://github.com/batool-alali-401-advanced-javascript/caps/pull/5)
+- [submission PR](https://github.com/batool-alali-401-advanced-javascript/caps/pull/7)
 - [Live URL]()
 - [JsDoc]()
-- [ci/cd](https://github.com/batool-alali-401-advanced-javascript/caps/runs/770257173)
+- [ci/cd](https://github.com/batool-alali-401-advanced-javascript/caps/runs/775694991)
 
 
 ### Setup
